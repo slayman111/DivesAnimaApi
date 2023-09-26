@@ -1,0 +1,29 @@
+version: '2.0'
+
+services:
+  dives-anima-db:
+    image: postgres
+    container_name: dives-anima-db
+    restart: always
+    environment:
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - '5432:5432'
+    networks:
+      - backend
+
+  dives-anima-api:
+    image: dives-anima-api:latest
+    container_name: dives-anima-api
+    environment:
+      - DB_URL=jdbc:postgresql://dives-anima-db:5432/postgres
+      - DB_USERNAME=postgres
+      - DB_PASSWORD=postgres
+    ports:
+      - '8080:8080'
+    networks:
+      - backend
+
+networks:
+  backend:
+    driver: bridge
