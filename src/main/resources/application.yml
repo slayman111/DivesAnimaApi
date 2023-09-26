@@ -9,3 +9,6 @@ spring:
     enabled: true
     change-log: classpath:db/changelog/liquibase-changelog.yml
     default-schema: public
+  jpa:
+    hibernate:
+      ddl-auto: none
