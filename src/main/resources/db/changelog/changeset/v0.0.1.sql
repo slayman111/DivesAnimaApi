@@ -1,17 +1,20 @@
-create table roles
+CREATE TABLE roles
 (
-    id    int primary key generated always as identity,
-    value varchar(50)
+    id    INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+    value VARCHAR(50) NOT NULL
 );
 
-insert into roles (value) values ('USER');
-insert into roles (value) values ('ADMIN');
+INSERT INTO roles (value)
+VALUES ('USER');
 
-create table users
+INSERT INTO roles (value)
+VALUES ('ADMIN');
+
+CREATE TABLE users
 (
-    id       int primary key generated always as identity,
-    login    varchar(255) unique not null,
-    password varchar(255)        not null,
-    role_id  int
-        constraint fk_users_roles references roles
+    id       INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+    login    VARCHAR(255) UNIQUE                   NOT NULL,
+    password VARCHAR(255)                          NOT NULL,
+    role_id  INT
+        CONSTRAINT fk_users_roles REFERENCES roles NOT NULL
 );

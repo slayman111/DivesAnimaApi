@@ -1,11 +1,16 @@
 package com.example.divesanimaapi.models;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
+
+import java.util.Set;
 
 @Getter
 @Setter
+@ToString
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "users")
 public class User {
@@ -21,7 +26,23 @@ public class User {
   @Column(name = "password", nullable = false)
   private String password;
 
-  @ManyToOne(fetch = FetchType.LAZY)
+  @ManyToOne
   @JoinColumn(name = "role_id")
   private Role role;
+
+  @ManyToMany(fetch = FetchType.EAGER)
+  @JoinTable(
+    name = "users_diaries",
+    joinColumns = @JoinColumn(name = "user_id"),
+    inverseJoinColumns = @JoinColumn(name = "diary_id")
+  )
+  private Set<Diary> diaries;
+
+  @ManyToMany(fetch = FetchType.EAGER)
+  @JoinTable(
+    name = "users_todos",
+    joinColumns = @JoinColumn(name = "user_id"),
+    inverseJoinColumns = @JoinColumn(name = "todo_id")
+  )
+  private Set<Todo> todos;
 }
