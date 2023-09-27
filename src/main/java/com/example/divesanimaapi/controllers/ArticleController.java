@@ -23,6 +23,11 @@ public class ArticleController {
     return ResponseEntity.ok(articleService.getPreviews());
   }
 
+  @GetMapping("/{id}")
+  public ResponseEntity<?> getById(@PathVariable Integer id) {
+    return ResponseEntity.ok(articleService.findById(id));
+  }
+
   @PostMapping(consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.MULTIPART_FORM_DATA_VALUE})
   @SneakyThrows
   public ResponseEntity<?> create(

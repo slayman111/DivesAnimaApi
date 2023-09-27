@@ -2,6 +2,7 @@ package com.example.divesanimaapi.services;
 
 import com.example.divesanimaapi.dto.requests.CreateArticleRequest;
 import com.example.divesanimaapi.dto.responses.ArticlePreviewResponse;
+import com.example.divesanimaapi.exceptions.ArticleNotFoundException;
 import com.example.divesanimaapi.models.Article;
 import com.example.divesanimaapi.repositories.ArticleRepository;
 import lombok.RequiredArgsConstructor;
@@ -27,5 +28,11 @@ public class ArticleService {
 
   public List<ArticlePreviewResponse> getPreviews() {
     return articleRepository.getAllProjectedBy();
+  }
+
+  public Article findById(Integer id) {
+    return articleRepository
+      .findById(id)
+      .orElseThrow(ArticleNotFoundException::new);
   }
 }
