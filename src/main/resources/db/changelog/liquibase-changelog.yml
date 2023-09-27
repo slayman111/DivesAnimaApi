@@ -3,3 +3,5 @@ databaseChangeLog:
       file: db/changelog/changeset/v0.0.1.sql
   - include:
       file: db/changelog/changeset/v0.0.2.sql
+  - include:
+      file: db/changelog/changeset/v0.0.3.sql

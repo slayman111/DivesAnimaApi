@@ -45,4 +45,12 @@ public class User {
     inverseJoinColumns = @JoinColumn(name = "todo_id")
   )
   private Set<Todo> todos;
+
+  @ManyToMany(fetch = FetchType.EAGER)
+  @JoinTable(
+    name = "users_articles",
+    joinColumns = @JoinColumn(name = "user_id"),
+    inverseJoinColumns = @JoinColumn(name = "article_id")
+  )
+  private Set<Article> articles;
 }

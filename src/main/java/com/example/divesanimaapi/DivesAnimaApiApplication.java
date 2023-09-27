@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class DivesAnimaApiApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(DivesAnimaApiApplication.class, args);
-	}
+  public static void main(String[] args) {
+    SpringApplication.run(DivesAnimaApiApplication.class, args);
+  }
 
 }

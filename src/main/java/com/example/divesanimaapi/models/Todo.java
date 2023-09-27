@@ -1,5 +1,6 @@
 package com.example.divesanimaapi.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -23,6 +24,7 @@ public class Todo {
   @Column(name = "completed", nullable = false)
   private Boolean completed;
 
+  @JsonIgnore
   @ManyToMany(mappedBy = "todos")
   private Set<User> users;
 }

@@ -5,7 +5,6 @@ import com.example.divesanimaapi.dto.responses.AuthResponse;
 import com.example.divesanimaapi.exceptions.UserNotFoundException;
 import com.example.divesanimaapi.services.AuthService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,20 +20,18 @@ public class AuthController {
 
   @PostMapping("/login")
   public ResponseEntity<?> login(@RequestBody AuthRequest authRequest) {
-    return new ResponseEntity<>(
+    return ResponseEntity.ok(
       new AuthResponse(authService
         .getUserByLoginAndPassword(authRequest.getLogin(), authRequest.getPassword())
         .orElseThrow(UserNotFoundException::new)
-      ),
-      HttpStatus.OK
+      )
     );
   }
 
   @PostMapping("/register")
   public ResponseEntity<?> register(@RequestBody AuthRequest authRequest) {
-    return new ResponseEntity<>(
-      new AuthResponse(authService.registerUser(authRequest.getLogin(), authRequest.getPassword())),
-      HttpStatus.OK
+    return ResponseEntity.ok(
+      new AuthResponse(authService.registerUser(authRequest.getLogin(), authRequest.getPassword()))
     );
   }
 }
