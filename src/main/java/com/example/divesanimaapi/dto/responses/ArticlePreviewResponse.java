@@ -1,10 +1,18 @@
 package com.example.divesanimaapi.dto.responses;
 
-public interface ArticlePreviewResponse {
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
-  Integer getId();
+@Getter
+@Setter
+@AllArgsConstructor
+public class ArticlePreviewResponse {
 
-  String getTitleText();
+  private Integer id;
 
-  byte[] getTitleImage();
+  private String titleText;
+
+  private byte[] titleImage;
+
 }

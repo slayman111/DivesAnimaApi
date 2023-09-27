@@ -7,7 +7,9 @@ import com.example.divesanimaapi.repositories.ArticleRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -26,6 +28,8 @@ public class ArticleService {
   }
 
   public List<ArticlePreviewResponse> getPreviews() {
-    return articleRepository.getAllProjectedBy();
+    return articleRepository.findAll().stream().map(article ->
+      new ArticlePreviewResponse(article.getId(), article.getText(), article.getTitleImage()))
+      .collect(Collectors.toList());
   }
 }

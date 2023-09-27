@@ -1,11 +1,14 @@
 package com.example.divesanimaapi.models;
 
+import com.example.divesanimaapi.dto.responses.ArticlePreviewResponse;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.Arrays;
+import java.util.Objects;
 import java.util.Set;
 
 @Getter
@@ -15,6 +18,14 @@ import java.util.Set;
 @AllArgsConstructor
 @Entity
 @Table(name = "articles")
+//@NamedNativeQuery(name = "Article.findByTitleTextNotNull",
+//  query = "SELECT a.id as id, a.title_text as titleText, a.title_image as titleImage FROM articles a",
+//  resultSetMapping = "Mapping.ArticlePreviewResponse")
+//@SqlResultSetMapping(name = "Mapping.ArticlePreviewResponse",
+//  classes = @ConstructorResult(targetClass = ArticlePreviewResponse.class,
+//    columns = {@ColumnResult(name = "id"),
+//      @ColumnResult(name = "titleText"),
+//      @ColumnResult(name = "titleImage")}))
 public class Article {
 
   @Id
