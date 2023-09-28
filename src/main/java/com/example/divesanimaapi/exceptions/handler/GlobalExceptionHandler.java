@@ -1,9 +1,7 @@
 package com.example.divesanimaapi.exceptions.handler;
 
-import com.example.divesanimaapi.dto.responses.ErrorResponse;
-import com.example.divesanimaapi.exceptions.ArticleNotFoundException;
-import com.example.divesanimaapi.exceptions.LoginAlreadyExistsException;
-import com.example.divesanimaapi.exceptions.UserNotFoundException;
+import com.example.divesanimaapi.dto.responses.error.ErrorResponse;
+import com.example.divesanimaapi.exceptions.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -31,5 +29,19 @@ public class GlobalExceptionHandler {
     return ResponseEntity
       .status(HttpStatus.NOT_FOUND)
       .body(new ErrorResponse(HttpStatus.NOT_FOUND.value(), ex.getMessage()));
+  }
+
+  @ExceptionHandler(TodoNotFoundException.class)
+  public ResponseEntity<ErrorResponse> handleTodoNotFoundException(TodoNotFoundException ex) {
+    return ResponseEntity
+      .status(HttpStatus.NOT_FOUND)
+      .body(new ErrorResponse(HttpStatus.NOT_FOUND.value(), ex.getMessage()));
+  }
+
+  @ExceptionHandler(UnprocessableRequestException.class)
+  public ResponseEntity<ErrorResponse> handleTodoNotFoundException(UnprocessableRequestException ex) {
+    return ResponseEntity
+      .status(HttpStatus.UNPROCESSABLE_ENTITY)
+      .body(new ErrorResponse(HttpStatus.UNPROCESSABLE_ENTITY.value(), ex.getMessage()));
   }
 }

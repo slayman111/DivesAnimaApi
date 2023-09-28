@@ -1,7 +1,7 @@
 package com.example.divesanimaapi.controllers;
 
-import com.example.divesanimaapi.dto.requests.AuthRequest;
-import com.example.divesanimaapi.dto.responses.AuthResponse;
+import com.example.divesanimaapi.dto.requests.auth.AuthRequest;
+import com.example.divesanimaapi.dto.responses.auth.AuthResponse;
 import com.example.divesanimaapi.exceptions.UserNotFoundException;
 import com.example.divesanimaapi.services.AuthService;
 import lombok.RequiredArgsConstructor;

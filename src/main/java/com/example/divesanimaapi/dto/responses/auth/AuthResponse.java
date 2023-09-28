@@ -1,4 +1,4 @@
-package com.example.divesanimaapi.dto.responses;
+package com.example.divesanimaapi.dto.responses.auth;
 
 import com.example.divesanimaapi.models.Role;
 import com.example.divesanimaapi.models.User;

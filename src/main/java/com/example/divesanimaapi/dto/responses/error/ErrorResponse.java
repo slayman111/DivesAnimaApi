@@ -1,4 +1,4 @@
-package com.example.divesanimaapi.dto.responses;
+package com.example.divesanimaapi.dto.responses.error;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;

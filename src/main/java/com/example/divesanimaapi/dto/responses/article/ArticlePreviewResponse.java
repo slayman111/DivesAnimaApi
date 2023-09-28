@@ -1,4 +1,4 @@
-package com.example.divesanimaapi.dto.responses;
+package com.example.divesanimaapi.dto.responses.article;
 
 public interface ArticlePreviewResponse {
 

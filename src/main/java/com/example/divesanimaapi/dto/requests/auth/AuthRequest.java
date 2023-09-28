@@ -1,4 +1,4 @@
-package com.example.divesanimaapi.dto.requests;
+package com.example.divesanimaapi.dto.requests.auth;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

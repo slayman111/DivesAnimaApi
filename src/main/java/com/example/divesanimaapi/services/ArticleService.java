@@ -1,7 +1,7 @@
 package com.example.divesanimaapi.services;
 
-import com.example.divesanimaapi.dto.requests.CreateArticleRequest;
-import com.example.divesanimaapi.dto.responses.ArticlePreviewResponse;
+import com.example.divesanimaapi.dto.requests.article.CreateArticleRequest;
+import com.example.divesanimaapi.dto.responses.article.ArticlePreviewResponse;
 import com.example.divesanimaapi.exceptions.ArticleNotFoundException;
 import com.example.divesanimaapi.models.Article;
 import com.example.divesanimaapi.repositories.ArticleRepository;
