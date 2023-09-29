@@ -11,6 +11,6 @@ public class LoginAlreadyExistsException extends GlobalHttpException {
 
   @Override
   public Integer getStatusCode() {
-    return HttpStatus.CONTINUE.value();
+    return HttpStatus.CONFLICT.value();
   }
 }
