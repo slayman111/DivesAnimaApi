@@ -1,9 +1,16 @@
 package com.example.divesanimaapi.exceptions;
 
-public class LoginAlreadyExistsException extends RuntimeException {
+import org.springframework.http.HttpStatus;
+
+public class LoginAlreadyExistsException extends GlobalHttpException {
 
   @Override
   public String getMessage() {
     return "Login already exists";
+  }
+
+  @Override
+  public Integer getStatusCode() {
+    return HttpStatus.CONTINUE.value();
   }
 }
