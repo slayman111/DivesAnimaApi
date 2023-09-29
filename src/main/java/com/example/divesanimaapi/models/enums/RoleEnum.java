@@ -1,4 +1,4 @@
-package com.example.divesanimaapi.models;
+package com.example.divesanimaapi.models.enums;
 
 public enum RoleEnum {
 
