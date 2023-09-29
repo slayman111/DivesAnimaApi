@@ -31,9 +31,7 @@ public class ArticleService {
   }
 
   public Article findById(Integer id) {
-    return articleRepository
-      .findById(id)
-      .orElseThrow(ObjectNotFoundException::new);
+    return articleRepository.findById(id).orElseThrow(ObjectNotFoundException::new);
   }
 
   public Article delete(Integer id) {
