@@ -35,4 +35,12 @@ public class ArticleService {
       .findById(id)
       .orElseThrow(ObjectNotFoundException::new);
   }
+
+  public Article delete(Integer id) {
+    Article article = articleRepository.findById(id).orElseThrow(ObjectNotFoundException::new);
+
+    articleRepository.delete(article);
+
+    return article;
+  }
 }

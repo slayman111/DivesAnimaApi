@@ -38,4 +38,11 @@ public class Article {
   @JsonIgnore
   @ManyToMany(mappedBy = "articles")
   private Set<User> users;
+
+  @PreRemove
+  private void removeAssociations() {
+    for (User user : this.getUsers()) {
+      user.getArticles().remove(this);
+    }
+  }
 }

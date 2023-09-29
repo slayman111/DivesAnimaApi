@@ -38,4 +38,9 @@ public class ArticleController {
 
     return ResponseEntity.ok(articleService.create(createArticleRequest, titleImage.getBytes()));
   }
+
+  @DeleteMapping("/{id}")
+  public ResponseEntity<?> delete(@PathVariable Integer id) {
+    return ResponseEntity.ok(articleService.delete(id));
+  }
 }
