@@ -1,24 +1,21 @@
 package com.example.divesanimaapi.services;
 
-import com.example.divesanimaapi.dto.requests.todo.CreateTodoRecordRequest;
-import com.example.divesanimaapi.dto.requests.todo.ChangeTodoRecordRequest;
-import com.example.divesanimaapi.exceptions.TodoNotFoundException;
+import com.example.divesanimaapi.dto.requests.todo.ChangeTodoRequest;
+import com.example.divesanimaapi.dto.requests.todo.CreateTodoRequest;
+import com.example.divesanimaapi.exceptions.ObjectNotFoundException;
 import com.example.divesanimaapi.exceptions.UnprocessableRequestException;
-import com.example.divesanimaapi.exceptions.UserNotFoundException;
 import com.example.divesanimaapi.models.Todo;
 import com.example.divesanimaapi.models.User;
 import com.example.divesanimaapi.repositories.TodoRepository;
 import com.example.divesanimaapi.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Set;
 
 @Service
-@Slf4j
 @RequiredArgsConstructor
 public class TodoService {
 
@@ -29,12 +26,12 @@ public class TodoService {
     return todoRepository.findTodosByUsersId(userId);
   }
 
-  public Todo create(CreateTodoRecordRequest createTodoRecordRequest) {
-    User user = userRepository.findById(createTodoRecordRequest.getUserId()).orElseThrow(UserNotFoundException::new);
+  public Todo create(CreateTodoRequest createTodoRequest) {
+    User user = userRepository.findById(createTodoRequest.getUserId()).orElseThrow(ObjectNotFoundException::new);
 
     Set<Todo> todos = user.getTodos();
     Todo todo = Todo.builder()
-      .record(createTodoRecordRequest.getRecord())
+      .record(createTodoRequest.getRecord())
       .completed(false)
       .build();
     todos.add(todo);
@@ -47,17 +44,17 @@ public class TodoService {
   }
 
   @SneakyThrows
-  public Todo change(ChangeTodoRecordRequest changeTodoRecordRequest) {
-    if (changeTodoRecordRequest.getId() == null) {
+  public Todo change(ChangeTodoRequest changeTodoRequest) {
+    if (changeTodoRequest.getId() == null) {
       throw new UnprocessableRequestException();
     }
 
-    Todo todo = todoRepository.findById(changeTodoRecordRequest.getId()).orElseThrow(TodoNotFoundException::new);
+    Todo todo = todoRepository.findById(changeTodoRequest.getId()).orElseThrow(ObjectNotFoundException::new);
 
-    if (changeTodoRecordRequest.getRecord() == null) {
+    if (changeTodoRequest.getRecord() == null) {
       todo.setCompleted(!todo.getCompleted());
     } else {
-      todo.setRecord(changeTodoRecordRequest.getRecord());
+      todo.setRecord(changeTodoRequest.getRecord());
     }
 
     todoRepository.save(todo);
@@ -66,7 +63,7 @@ public class TodoService {
   }
 
   public Todo delete(Integer id) {
-    Todo todo = todoRepository.findById(id).orElseThrow(TodoNotFoundException::new);
+    Todo todo = todoRepository.findById(id).orElseThrow(ObjectNotFoundException::new);
 
     todoRepository.delete(todo);
 

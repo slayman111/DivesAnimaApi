@@ -2,7 +2,7 @@ package com.example.divesanimaapi.controllers;
 
 import com.example.divesanimaapi.dto.requests.auth.AuthRequest;
 import com.example.divesanimaapi.dto.responses.auth.AuthResponse;
-import com.example.divesanimaapi.exceptions.UserNotFoundException;
+import com.example.divesanimaapi.exceptions.ObjectNotFoundException;
 import com.example.divesanimaapi.services.AuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -23,7 +23,7 @@ public class AuthController {
     return ResponseEntity.ok(
       new AuthResponse(authService
         .getUserByLoginAndPassword(authRequest.getLogin(), authRequest.getPassword())
-        .orElseThrow(UserNotFoundException::new)
+        .orElseThrow(ObjectNotFoundException::new)
       )
     );
   }

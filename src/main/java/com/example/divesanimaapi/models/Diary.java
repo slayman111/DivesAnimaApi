@@ -3,14 +3,16 @@ package com.example.divesanimaapi.models;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDate;
 import java.util.Set;
 
 @Getter
 @Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "diaries")
 public class Diary {
@@ -33,4 +35,11 @@ public class Diary {
   @JsonIgnore
   @ManyToMany(mappedBy = "diaries")
   private Set<User> users;
+
+  @PreRemove
+  private void removeAssociations() {
+    for (User user : this.getUsers()) {
+      user.getDiaries().remove(this);
+    }
+  }
 }

@@ -2,11 +2,11 @@ package com.example.divesanimaapi.exceptions;
 
 import org.springframework.http.HttpStatus;
 
-public class ArticleNotFoundException extends GlobalHttpException {
+public class ObjectNotFoundException extends GlobalHttpException {
 
   @Override
   public String getMessage() {
-    return "Article not found";
+    return "Requested object not found";
   }
 
   @Override

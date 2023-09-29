@@ -1,7 +1,7 @@
 package com.example.divesanimaapi.controllers;
 
-import com.example.divesanimaapi.dto.requests.todo.ChangeTodoRecordRequest;
-import com.example.divesanimaapi.dto.requests.todo.CreateTodoRecordRequest;
+import com.example.divesanimaapi.dto.requests.todo.ChangeTodoRequest;
+import com.example.divesanimaapi.dto.requests.todo.CreateTodoRequest;
 import com.example.divesanimaapi.services.TodoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -20,13 +20,13 @@ public class TodoController {
   }
 
   @PostMapping
-  public ResponseEntity<?> create(@RequestBody CreateTodoRecordRequest createTodoRecordRequest) {
-    return ResponseEntity.ok(todoService.create(createTodoRecordRequest));
+  public ResponseEntity<?> create(@RequestBody CreateTodoRequest createTodoRequest) {
+    return ResponseEntity.ok(todoService.create(createTodoRequest));
   }
 
   @PatchMapping
-  public ResponseEntity<?> change(@RequestBody ChangeTodoRecordRequest changeTodoRecordRequest) {
-    return ResponseEntity.ok(todoService.change(changeTodoRecordRequest));
+  public ResponseEntity<?> change(@RequestBody ChangeTodoRequest changeTodoRequest) {
+    return ResponseEntity.ok(todoService.change(changeTodoRequest));
   }
 
   @DeleteMapping("/{id}")

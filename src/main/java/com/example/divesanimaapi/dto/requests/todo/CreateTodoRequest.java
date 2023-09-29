@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CreateTodoRecordRequest {
+public class CreateTodoRequest {
 
   @JsonProperty("user_id")
   private Integer userId;
