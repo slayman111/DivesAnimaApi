@@ -24,7 +24,7 @@ public class TodoController {
     return ResponseEntity.ok(todoService.create(createTodoRequest));
   }
 
-  @PutMapping
+  @PatchMapping
   public ResponseEntity<?> change(@RequestBody ChangeTodoRequest changeTodoRequest) {
     return ResponseEntity.ok(todoService.change(changeTodoRequest));
   }

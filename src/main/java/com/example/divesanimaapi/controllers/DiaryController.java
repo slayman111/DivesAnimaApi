@@ -26,7 +26,7 @@ public class DiaryController {
     return ResponseEntity.ok(diaryService.create(createDiaryRequest));
   }
 
-  @PutMapping
+  @PatchMapping
   public ResponseEntity<?> change(@RequestBody ChangeDiaryRequest changeDiaryRequest) {
     return ResponseEntity.ok(diaryService.change(changeDiaryRequest));
   }
