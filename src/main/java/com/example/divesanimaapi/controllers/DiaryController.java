@@ -1,7 +1,7 @@
 package com.example.divesanimaapi.controllers;
 
-import com.example.divesanimaapi.dto.requests.diary.ChangeDiaryRequest;
-import com.example.divesanimaapi.dto.requests.diary.CreateDiaryRequest;
+import com.example.divesanimaapi.models.dto.requests.diary.ChangeDiaryRequest;
+import com.example.divesanimaapi.models.dto.requests.diary.CreateDiaryRequest;
 import com.example.divesanimaapi.services.DiaryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

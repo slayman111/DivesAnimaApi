@@ -1,6 +1,6 @@
 package com.example.divesanimaapi.controllers;
 
-import com.example.divesanimaapi.dto.requests.article.CreateArticleRequest;
+import com.example.divesanimaapi.models.dto.requests.article.CreateArticleRequest;
 import com.example.divesanimaapi.services.ArticleService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;

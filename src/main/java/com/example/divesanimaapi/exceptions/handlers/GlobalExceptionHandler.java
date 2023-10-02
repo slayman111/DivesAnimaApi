@@ -1,6 +1,6 @@
 package com.example.divesanimaapi.exceptions.handlers;
 
-import com.example.divesanimaapi.dto.responses.error.ErrorResponse;
+import com.example.divesanimaapi.models.dto.responses.error.ErrorResponse;
 import com.example.divesanimaapi.exceptions.GlobalHttpException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;

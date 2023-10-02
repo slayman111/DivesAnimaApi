@@ -1,4 +1,4 @@
-package com.example.divesanimaapi.dto.responses.auth;
+package com.example.divesanimaapi.models.dto.responses.auth;
 
 import com.example.divesanimaapi.models.entities.Role;
 import lombok.AllArgsConstructor;

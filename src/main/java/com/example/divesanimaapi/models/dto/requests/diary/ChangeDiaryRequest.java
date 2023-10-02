@@ -1,19 +1,17 @@
-package com.example.divesanimaapi.dto.requests.diary;
+package com.example.divesanimaapi.models.dto.requests.diary;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
 @Data
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class CreateDiaryRequest {
+public class ChangeDiaryRequest {
 
-  private Integer userId;
+  private Integer id;
   private String record;
   private LocalDate date;
 }

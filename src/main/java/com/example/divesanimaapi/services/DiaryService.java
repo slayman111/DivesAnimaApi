@@ -1,7 +1,7 @@
 package com.example.divesanimaapi.services;
 
-import com.example.divesanimaapi.dto.requests.diary.ChangeDiaryRequest;
-import com.example.divesanimaapi.dto.requests.diary.CreateDiaryRequest;
+import com.example.divesanimaapi.models.dto.requests.diary.ChangeDiaryRequest;
+import com.example.divesanimaapi.models.dto.requests.diary.CreateDiaryRequest;
 import com.example.divesanimaapi.exceptions.ObjectNotFoundException;
 import com.example.divesanimaapi.exceptions.UnprocessableRequestException;
 import com.example.divesanimaapi.models.entities.Diary;

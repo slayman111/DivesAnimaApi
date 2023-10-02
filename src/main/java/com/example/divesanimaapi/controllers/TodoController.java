@@ -1,7 +1,7 @@
 package com.example.divesanimaapi.controllers;
 
-import com.example.divesanimaapi.dto.requests.todo.ChangeTodoRequest;
-import com.example.divesanimaapi.dto.requests.todo.CreateTodoRequest;
+import com.example.divesanimaapi.models.dto.requests.todo.ChangeTodoRequest;
+import com.example.divesanimaapi.models.dto.requests.todo.CreateTodoRequest;
 import com.example.divesanimaapi.services.TodoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

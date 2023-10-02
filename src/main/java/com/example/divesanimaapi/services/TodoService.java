@@ -1,7 +1,7 @@
 package com.example.divesanimaapi.services;
 
-import com.example.divesanimaapi.dto.requests.todo.ChangeTodoRequest;
-import com.example.divesanimaapi.dto.requests.todo.CreateTodoRequest;
+import com.example.divesanimaapi.models.dto.requests.todo.ChangeTodoRequest;
+import com.example.divesanimaapi.models.dto.requests.todo.CreateTodoRequest;
 import com.example.divesanimaapi.exceptions.ObjectNotFoundException;
 import com.example.divesanimaapi.exceptions.UnprocessableRequestException;
 import com.example.divesanimaapi.models.entities.Todo;

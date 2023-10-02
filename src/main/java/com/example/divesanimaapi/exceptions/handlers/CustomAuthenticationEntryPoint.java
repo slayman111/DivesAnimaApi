@@ -1,6 +1,6 @@
 package com.example.divesanimaapi.exceptions.handlers;
 
-import com.example.divesanimaapi.dto.responses.error.ErrorResponse;
+import com.example.divesanimaapi.models.dto.responses.error.ErrorResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
