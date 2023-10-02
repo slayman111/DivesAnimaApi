@@ -1,4 +1,4 @@
-package com.example.divesanimaapi.exceptions.handler;
+package com.example.divesanimaapi.exceptions.handlers;
 
 import com.example.divesanimaapi.dto.responses.error.ErrorResponse;
 import com.example.divesanimaapi.exceptions.GlobalHttpException;

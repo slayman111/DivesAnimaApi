@@ -14,5 +14,5 @@ public class ErrorResponse {
 
   @JsonProperty("status_code")
   private Integer statusCode;
-  private String err;
+  private String error;
 }
