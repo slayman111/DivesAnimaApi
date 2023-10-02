@@ -16,3 +16,7 @@ spring:
     properties:
       hibernate:
         format_sql: true
+  security:
+    jwt:
+      secret: ${JWT_SECRET:472B4B6150645367566B5970337336763979244226452948404D635166546857}
+      expire-hours: ${JWT_EXPIRE_HOURS:124}
