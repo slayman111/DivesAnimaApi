@@ -12,6 +12,10 @@ public class DailyImageService {
 
   private final DailyImageRepository dailyImageRepository;
 
+  public DailyImage getRandom() {
+    return dailyImageRepository.getRandom();
+  }
+
   public DailyImage create(byte[] dailyImageBytes) {
     DailyImage dailyImage = new DailyImage();
     dailyImage.setImage(dailyImageBytes);

@@ -14,6 +14,11 @@ public class DailyImageController {
 
   private final DailyImageService dailyImageService;
 
+  @GetMapping
+  public ResponseEntity<?> getRandom() {
+    return ResponseEntity.ok(dailyImageService.getRandom());
+  }
+
   @PostMapping
   @SneakyThrows
   public ResponseEntity<?> create(@RequestParam("daily_image") MultipartFile dailyImage) {
