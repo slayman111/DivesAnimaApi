@@ -17,8 +17,12 @@ public class DiaryController {
   private final DiaryService diaryService;
 
   @GetMapping
-  public ResponseEntity<?> getAll(@RequestParam LocalDate from, @RequestParam LocalDate to) {
-    return ResponseEntity.ok(diaryService.getAll(from, to));
+  public ResponseEntity<?> getAll(
+    @RequestParam Integer userId,
+    @RequestParam LocalDate from,
+    @RequestParam LocalDate to
+  ) {
+    return ResponseEntity.ok(diaryService.getAll(userId, from, to));
   }
 
   @PostMapping

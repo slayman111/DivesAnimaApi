@@ -1,9 +1,9 @@
 package com.example.divesanimaapi.services;
 
-import com.example.divesanimaapi.models.dto.requests.diary.ChangeDiaryRequest;
-import com.example.divesanimaapi.models.dto.requests.diary.CreateDiaryRequest;
 import com.example.divesanimaapi.exceptions.ObjectNotFoundException;
 import com.example.divesanimaapi.exceptions.UnprocessableRequestException;
+import com.example.divesanimaapi.models.dto.requests.diary.ChangeDiaryRequest;
+import com.example.divesanimaapi.models.dto.requests.diary.CreateDiaryRequest;
 import com.example.divesanimaapi.models.entities.Diary;
 import com.example.divesanimaapi.models.entities.User;
 import com.example.divesanimaapi.repositories.DiaryRepository;
@@ -22,8 +22,8 @@ public class DiaryService {
   private final DiaryRepository diaryRepository;
   private final UserRepository userRepository;
 
-  public List<Diary> getAll(LocalDate from, LocalDate to) {
-    return diaryRepository.findByDateBetween(from, to);
+  public List<Diary> getAll(Integer userId, LocalDate from, LocalDate to) {
+    return diaryRepository.findByDateBetweenAndUsersId(from, to, userId);
   }
 
   public Diary create(CreateDiaryRequest createDiaryRequest) {
