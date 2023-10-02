@@ -3,7 +3,7 @@ package com.example.divesanimaapi.services;
 import com.example.divesanimaapi.dto.requests.article.CreateArticleRequest;
 import com.example.divesanimaapi.dto.responses.article.ArticlePreviewResponse;
 import com.example.divesanimaapi.exceptions.ObjectNotFoundException;
-import com.example.divesanimaapi.models.Article;
+import com.example.divesanimaapi.models.entities.Article;
 import com.example.divesanimaapi.repositories.ArticleRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

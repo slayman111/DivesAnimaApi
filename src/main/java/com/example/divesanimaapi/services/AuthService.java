@@ -1,9 +1,9 @@
 package com.example.divesanimaapi.services;
 
 import com.example.divesanimaapi.exceptions.LoginAlreadyExistsException;
-import com.example.divesanimaapi.models.Role;
+import com.example.divesanimaapi.models.entities.Role;
 import com.example.divesanimaapi.models.enums.RoleEnum;
-import com.example.divesanimaapi.models.User;
+import com.example.divesanimaapi.models.entities.User;
 import com.example.divesanimaapi.repositories.RoleRepository;
 import com.example.divesanimaapi.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;

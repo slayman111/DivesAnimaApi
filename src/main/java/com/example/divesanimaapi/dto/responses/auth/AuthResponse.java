@@ -1,7 +1,7 @@
 package com.example.divesanimaapi.dto.responses.auth;
 
-import com.example.divesanimaapi.models.Role;
-import com.example.divesanimaapi.models.User;
+import com.example.divesanimaapi.models.entities.Role;
+import com.example.divesanimaapi.models.entities.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

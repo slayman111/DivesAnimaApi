@@ -1,4 +1,4 @@
-package com.example.divesanimaapi.models;
+package com.example.divesanimaapi.models.entities;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

@@ -1,4 +1,4 @@
-package com.example.divesanimaapi.models;
+package com.example.divesanimaapi.models.entities;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -11,38 +11,35 @@ import java.util.Set;
 @Getter
 @Setter
 @Builder
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Entity
-@Table(name = "articles")
-public class Article {
+@Table(name = "diaries")
+public class Diary {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "id", nullable = false)
   private Integer id;
 
-  @Column(name = "title_text", length = 50, nullable = false)
-  private String titleText;
-
-  @Column(name = "title_image")
-  private byte[] titleImage;
-
-  @Column(name = "text", nullable = false)
-  private String text;
-
   @Column(name = "date", nullable = false)
   @JsonFormat(pattern = "yyyy-MM-dd")
   private LocalDate date;
 
+  @Column(name = "record", nullable = false)
+  private String record;
+
+  @Column(name = "completed", nullable = false)
+  private Boolean completed = false;
+
   @JsonIgnore
-  @ManyToMany(mappedBy = "articles")
+  @ManyToMany(mappedBy = "diaries")
   private Set<User> users;
 
   @PreRemove
   private void removeAssociations() {
     for (User user : this.getUsers()) {
-      user.getArticles().remove(this);
+      user.getDiaries().remove(this);
     }
   }
 }

@@ -1,4 +1,4 @@
-package com.example.divesanimaapi.models;
+package com.example.divesanimaapi.models.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;

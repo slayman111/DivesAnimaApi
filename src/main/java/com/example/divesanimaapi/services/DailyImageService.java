@@ -1,7 +1,7 @@
 package com.example.divesanimaapi.services;
 
 import com.example.divesanimaapi.exceptions.ObjectNotFoundException;
-import com.example.divesanimaapi.models.DailyImage;
+import com.example.divesanimaapi.models.entities.DailyImage;
 import com.example.divesanimaapi.repositories.DailyImageRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

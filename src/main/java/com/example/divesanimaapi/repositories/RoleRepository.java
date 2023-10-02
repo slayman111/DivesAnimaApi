@@ -1,6 +1,6 @@
 package com.example.divesanimaapi.repositories;
 
-import com.example.divesanimaapi.models.Role;
+import com.example.divesanimaapi.models.entities.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
