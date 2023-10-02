@@ -1,7 +1,6 @@
 package com.example.divesanimaapi.controllers;
 
 import com.example.divesanimaapi.models.dto.requests.auth.AuthRequest;
-import com.example.divesanimaapi.models.dto.responses.auth.AuthResponse;
 import com.example.divesanimaapi.services.AuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -18,14 +17,14 @@ public class AuthController {
   private final AuthService authService;
 
   @PostMapping("/login")
-  public ResponseEntity<AuthResponse> login(@RequestBody AuthRequest authRequest) {
+  public ResponseEntity<?> login(@RequestBody AuthRequest authRequest) {
     return ResponseEntity.ok(
       authService.authenticate(authRequest.getLogin(), authRequest.getPassword())
     );
   }
 
   @PostMapping("/register")
-  public ResponseEntity<AuthResponse> register(@RequestBody AuthRequest authRequest) {
+  public ResponseEntity<?> register(@RequestBody AuthRequest authRequest) {
     return ResponseEntity.ok(
       authService.register(authRequest.getLogin(), authRequest.getPassword())
     );
