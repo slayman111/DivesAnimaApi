@@ -1,7 +1,7 @@
 package com.example.divesanimaapi.services;
 
-import com.example.divesanimaapi.models.dto.responses.auth.AuthResponse;
 import com.example.divesanimaapi.exceptions.LoginAlreadyExistsException;
+import com.example.divesanimaapi.models.dto.responses.auth.AuthResponse;
 import com.example.divesanimaapi.models.entities.Role;
 import com.example.divesanimaapi.models.entities.User;
 import com.example.divesanimaapi.models.enums.RoleEnum;

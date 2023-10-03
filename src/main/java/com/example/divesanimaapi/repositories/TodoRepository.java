@@ -9,5 +9,5 @@ import java.util.List;
 @Repository
 public interface TodoRepository extends JpaRepository<Todo, Integer> {
 
-  List<Todo> findTodosByUsersId(Integer userId);
+  List<Todo> findTodosByUsersLogin(String login);
 }

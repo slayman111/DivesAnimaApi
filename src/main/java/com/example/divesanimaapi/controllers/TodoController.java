@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
+
 @RestController
 @RequestMapping("api/todo")
 @RequiredArgsConstructor
@@ -14,23 +16,23 @@ public class TodoController {
 
   private final TodoService todoService;
 
-  @GetMapping("/{user-id}")
-  public ResponseEntity<?> getAll(@PathVariable("user-id") Integer userId) {
-    return ResponseEntity.ok(todoService.findByUserId(userId));
+  @GetMapping
+  public ResponseEntity<?> getAll(Principal principal) {
+    return ResponseEntity.ok(todoService.findByLogin(principal.getName()));
   }
 
   @PostMapping
-  public ResponseEntity<?> create(@RequestBody CreateTodoRequest createTodoRequest) {
-    return ResponseEntity.ok(todoService.create(createTodoRequest));
+  public ResponseEntity<?> create(@RequestBody CreateTodoRequest createTodoRequest, Principal principal) {
+    return ResponseEntity.ok(todoService.create(createTodoRequest, principal.getName()));
   }
 
   @PatchMapping
-  public ResponseEntity<?> change(@RequestBody ChangeTodoRequest changeTodoRequest) {
-    return ResponseEntity.ok(todoService.change(changeTodoRequest));
+  public ResponseEntity<?> change(@RequestBody ChangeTodoRequest changeTodoRequest, Principal principal) {
+    return ResponseEntity.ok(todoService.change(changeTodoRequest, principal.getName()));
   }
 
   @DeleteMapping("/{id}")
-  public ResponseEntity<?> delete(@PathVariable Integer id) {
-    return ResponseEntity.ok(todoService.delete(id));
+  public ResponseEntity<?> delete(@PathVariable Integer id, Principal principal) {
+    return ResponseEntity.ok(todoService.delete(id, principal.getName()));
   }
 }

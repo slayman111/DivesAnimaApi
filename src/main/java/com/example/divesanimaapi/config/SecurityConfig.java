@@ -1,6 +1,7 @@
 package com.example.divesanimaapi.config;
 
 import com.example.divesanimaapi.exceptions.handlers.CustomAuthenticationEntryPoint;
+import com.example.divesanimaapi.models.enums.RoleEnum;
 import com.example.divesanimaapi.services.jwt.JwtAuthenticationFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -34,6 +35,10 @@ public class SecurityConfig {
     "/webjars/**",
     "/swagger-ui.html",
   };
+  private static final String[] ADMIN_URL = {
+    "api/article/admin/**",
+    "api/article/admin",
+  };
 
   @Bean
   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -42,6 +47,7 @@ public class SecurityConfig {
       .authorizeHttpRequests(reg ->
         reg
           .requestMatchers(WHITE_LIST_URL).permitAll()
+          .requestMatchers(ADMIN_URL).hasAuthority(RoleEnum.ADMIN.name())
           .anyRequest().authenticated()
       )
       .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))

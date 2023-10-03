@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.time.LocalDate;
 
 @RestController
@@ -18,25 +19,25 @@ public class DiaryController {
 
   @GetMapping
   public ResponseEntity<?> getAll(
-    @RequestParam Integer userId,
     @RequestParam LocalDate from,
-    @RequestParam LocalDate to
+    @RequestParam LocalDate to,
+    Principal principal
   ) {
-    return ResponseEntity.ok(diaryService.getAll(userId, from, to));
+    return ResponseEntity.ok(diaryService.getAll(principal.getName(), from, to));
   }
 
   @PostMapping
-  public ResponseEntity<?> create(@RequestBody CreateDiaryRequest createDiaryRequest) {
-    return ResponseEntity.ok(diaryService.create(createDiaryRequest));
+  public ResponseEntity<?> create(@RequestBody CreateDiaryRequest createDiaryRequest, Principal principal) {
+    return ResponseEntity.ok(diaryService.create(createDiaryRequest, principal.getName()));
   }
 
   @PatchMapping
-  public ResponseEntity<?> change(@RequestBody ChangeDiaryRequest changeDiaryRequest) {
-    return ResponseEntity.ok(diaryService.change(changeDiaryRequest));
+  public ResponseEntity<?> change(@RequestBody ChangeDiaryRequest changeDiaryRequest, Principal principal) {
+    return ResponseEntity.ok(diaryService.change(changeDiaryRequest, principal.getName()));
   }
 
   @DeleteMapping("/{id}")
-  public ResponseEntity<?> delete(@PathVariable Integer id) {
-    return ResponseEntity.ok(diaryService.delete(id));
+  public ResponseEntity<?> delete(@PathVariable Integer id, Principal principal) {
+    return ResponseEntity.ok(diaryService.delete(id, principal.getName()));
   }
 }

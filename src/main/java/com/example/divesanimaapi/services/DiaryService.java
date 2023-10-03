@@ -8,6 +8,7 @@ import com.example.divesanimaapi.models.entities.Diary;
 import com.example.divesanimaapi.models.entities.User;
 import com.example.divesanimaapi.repositories.DiaryRepository;
 import com.example.divesanimaapi.repositories.UserRepository;
+import com.example.divesanimaapi.utils.PermissionsUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -22,12 +23,12 @@ public class DiaryService {
   private final DiaryRepository diaryRepository;
   private final UserRepository userRepository;
 
-  public List<Diary> getAll(Integer userId, LocalDate from, LocalDate to) {
-    return diaryRepository.findByDateBetweenAndUsersId(from, to, userId);
+  public List<Diary> getAll(String login, LocalDate from, LocalDate to) {
+    return diaryRepository.findByDateBetweenAndUsersLogin(from, to, login);
   }
 
-  public Diary create(CreateDiaryRequest createDiaryRequest) {
-    User user = userRepository.findById(createDiaryRequest.getUserId()).orElseThrow(ObjectNotFoundException::new);
+  public Diary create(CreateDiaryRequest createDiaryRequest, String login) {
+    User user = userRepository.findByLogin(login).orElseThrow(ObjectNotFoundException::new);
 
     Set<Diary> diaries = user.getDiaries();
     Diary diary = Diary.builder()
@@ -44,12 +45,13 @@ public class DiaryService {
     return diary;
   }
 
-  public Diary change(ChangeDiaryRequest changeDiaryRequest) {
+  public Diary change(ChangeDiaryRequest changeDiaryRequest, String login) {
     if (changeDiaryRequest.getId() == null) {
       throw new UnprocessableRequestException();
     }
 
     Diary diary = diaryRepository.findById(changeDiaryRequest.getId()).orElseThrow(ObjectNotFoundException::new);
+    PermissionsUtil.checkUserPermissions(diary.getUsers(), login);
 
     if (changeDiaryRequest.getRecord() == null && changeDiaryRequest.getDate() == null) {
       diary.setCompleted(!diary.getCompleted());
@@ -64,8 +66,9 @@ public class DiaryService {
     return diary;
   }
 
-  public Diary delete(Integer id) {
+  public Diary delete(Integer id, String login) {
     Diary diary = diaryRepository.findById(id).orElseThrow(ObjectNotFoundException::new);
+    PermissionsUtil.checkUserPermissions(diary.getUsers(), login);
 
     diaryRepository.delete(diary);
 

@@ -1,8 +1,8 @@
 package com.example.divesanimaapi.services;
 
+import com.example.divesanimaapi.exceptions.ObjectNotFoundException;
 import com.example.divesanimaapi.models.dto.requests.article.CreateArticleRequest;
 import com.example.divesanimaapi.models.dto.responses.article.ArticlePreviewResponse;
-import com.example.divesanimaapi.exceptions.ObjectNotFoundException;
 import com.example.divesanimaapi.models.entities.Article;
 import com.example.divesanimaapi.repositories.ArticleRepository;
 import lombok.RequiredArgsConstructor;

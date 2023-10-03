@@ -13,7 +13,6 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class CreateDiaryRequest {
 
-  private Integer userId;
   private String record;
   private LocalDate date;
 }

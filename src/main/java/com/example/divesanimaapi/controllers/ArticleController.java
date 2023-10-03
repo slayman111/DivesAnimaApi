@@ -28,7 +28,10 @@ public class ArticleController {
     return ResponseEntity.ok(articleService.findById(id));
   }
 
-  @PostMapping(consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.MULTIPART_FORM_DATA_VALUE})
+  @PostMapping(
+    value = "/admin",
+    consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.MULTIPART_FORM_DATA_VALUE}
+  )
   @SneakyThrows
   public ResponseEntity<?> create(
     @RequestPart("article") String article,
@@ -39,7 +42,7 @@ public class ArticleController {
     return ResponseEntity.ok(articleService.create(createArticleRequest, titleImage.getBytes()));
   }
 
-  @DeleteMapping("/{id}")
+  @DeleteMapping("/admin/{id}")
   public ResponseEntity<?> delete(@PathVariable Integer id) {
     return ResponseEntity.ok(articleService.delete(id));
   }
