@@ -4,6 +4,7 @@ import com.example.divesanimaapi.exceptions.handlers.CustomAuthenticationEntryPo
 import com.example.divesanimaapi.models.enums.RoleEnum;
 import com.example.divesanimaapi.services.jwt.JwtAuthenticationFilter;
 import lombok.RequiredArgsConstructor;
+import lombok.SneakyThrows;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -41,7 +42,8 @@ public class SecurityConfig {
   };
 
   @Bean
-  public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+  @SneakyThrows
+  public SecurityFilterChain securityFilterChain(HttpSecurity http) {
     http
       .csrf(AbstractHttpConfigurer::disable)
       .authorizeHttpRequests(reg ->
